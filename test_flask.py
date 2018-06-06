@@ -50,9 +50,11 @@ def test_apitest():
 	data = get_the_request()
 	assert data == True , "The api response is not equal to assigned"
 
-
-if __name__ == '__main__':
+"""	
+#if __name__ == '__main__':
+def test_flask():
 	print("running testing ########")
 	#return True
 	#time.sleep(100)
-	unittest.main(verbosity=2)
+	#unittest.main(verbosity=2)
+"""	

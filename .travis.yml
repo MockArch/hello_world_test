@@ -16,13 +16,13 @@ after_script:
 
   # start the web app
   - |
-    python app.py &
+    python runserver.py &
     APP_PID=$!
 
 
   # execute the API tests
   #
-  - |
-    pytest -v test_flask.py
+  #- |
+  #  pytest -v test_flask.py
         
   - kill $APP_PID
