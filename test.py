@@ -16,7 +16,7 @@ tasks = [
   },
   {
 	"description": "Need to find a good Python tutorial on the web",
-	"done": False,
+	"done": True,
 	"id": 2,
 	"title": "Learn Python"
   }
