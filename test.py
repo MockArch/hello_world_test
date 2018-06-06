@@ -1,6 +1,7 @@
-import urllib3
+#import urllib3
 import json
 from bson.json_util import dumps
+import requests
 import unittest
 import time
 import os
@@ -23,10 +24,10 @@ tasks = [
 
 
 def get_the_request():
-	http = urllib3.PoolManager()
-	r = http.request('GET', 'http://127.0.0.1:5000/tasks')
-
-	a = json.loads(r.data)
+	#http = urllib3.PoolManager()
+	#r = http.request('GET', 'http://127.0.0.1:5000/tasks')
+	r = requests.get('http://127.0.0.1:5000/tasks')
+	a = r.json()
 	for ind, i in enumerate(tasks):
 		for j in i.keys():
 			if tasks[ind][j] == a.get('tasks')[ind][j]:
