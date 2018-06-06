@@ -1,6 +1,7 @@
 #import urllib3
 import json
 #from bson.json_util import dumps
+import pytest
 import requests
 import unittest
 import time
@@ -34,6 +35,7 @@ def get_the_request():
 		get_the_request()
 
 	a = r.json()
+	print(a)
 	for ind, i in enumerate(tasks):
 		for j in i.keys():
 			if tasks[ind][j] == a.get('tasks')[ind][j]:
@@ -43,13 +45,10 @@ def get_the_request():
 	return True
 
 
-class SimplisticTest(unittest.TestCase):
-	data = get_the_request()
 
-	def test_apitest(self):
-		print(self.__class__.data)
-		self.assertTrue(self.__class__.data,
-						msg="response not accordint to indented ")
+def test_apitest():
+	data = get_the_request()
+	assert data == True , "The api response is not equal to assigned"
 
 
 if __name__ == '__main__':

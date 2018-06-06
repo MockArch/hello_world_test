@@ -22,6 +22,6 @@ after_script:
 
   # execute the API tests
   - |
-    python test.py
-
+    pytest -v test_flask.py
+        
   - kill $APP_PID
