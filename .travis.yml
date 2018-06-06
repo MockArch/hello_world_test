@@ -1,11 +1,27 @@
 language: python
-
-
 python:
-
   - "3.5"
 
-script: 
+addons:
+  apt:
+    packages:
+      - ca-certificates
 
-  - python app.py
+install: "pip install Flask"
 
+script:
+  - echo "Unit tests"
+
+after_script:
+
+  # start the web app
+  - |
+    python app.py &
+    APP_PID=$!
+
+
+  # execute the API tests
+  - |
+    python test.py
+
+  - kill $APP_PID

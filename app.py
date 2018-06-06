@@ -1,5 +1,33 @@
-def SayHello():
-	return ("hello")
+from flask import Flask, jsonify
 
-if __name__ == "__main__":
-	print(SayHello())
+app = Flask(__name__)
+
+tasks = [
+	{
+		'id': 1,
+		'title': u'Buy groceries',
+		'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
+		'done': False
+	},
+	{
+		'id': 2,
+		'title': u'Learn Python',
+		'description': u'Need to find a good Python tutorial on the web',
+		'done': False
+	}
+]
+
+
+@app.route('/tasks', methods=['GET'])
+def get_tasks():
+	return jsonify({'tasks': tasks})
+
+"""
+def runserver():
+	#rint("running server")
+	app.run(debug=True)
+"""
+
+if __name__ == '__main__':
+	print("running server")
+	app.run(debug=True)
