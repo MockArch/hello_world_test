@@ -6,6 +6,7 @@ import unittest
 import time
 import os
 import sys
+from requests.exceptions import *
 
 tasks = [
   {
@@ -26,7 +27,12 @@ tasks = [
 def get_the_request():
 	#http = urllib3.PoolManager()
 	#r = http.request('GET', 'http://127.0.0.1:5000/tasks')
-	r = requests.get('http://127.0.0.1:5000/tasks')
+	try:
+		r = requests.get('http://127.0.0.1:5000/tasks')
+	except ConnectionError:
+		time.sleep(10)
+		get_the_request()
+
 	a = r.json()
 	for ind, i in enumerate(tasks):
 		for j in i.keys():
