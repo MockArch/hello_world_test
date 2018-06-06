@@ -16,8 +16,8 @@ after_script:
 
   # start the web app
   - |
-    python runserver.py &
-    APP_PID=$!
+    python runserver.py 
+  #  APP_PID=$!
 
 
   # execute the API tests
