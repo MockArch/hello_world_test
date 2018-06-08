@@ -51,8 +51,8 @@ class SimpleFlaskTest(unittest.TestCase):
     	self.assertTrue(self.__class__.data, msg="the api json response it not fine")
 
 
-def test_flask():
+if __name__ == '__main__':
     print("running testing ########")
-    return True
     time.sleep(100)
     unittest.main(verbosity=2)
+    
