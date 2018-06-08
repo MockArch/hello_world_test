@@ -11,7 +11,7 @@ dependencies:
       name: Run Servers
       command: python app.py
       background: true    
-
-test:
-  override:
-    - nosetests test_flask.py
+- run:
+      name: Run Servers
+      command: nosetests test_flask.py
+      

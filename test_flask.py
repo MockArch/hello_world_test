@@ -28,10 +28,10 @@ tasks = [
 def get_the_request():
     #http = urllib3.PoolManager()
     #r = http.request('GET', 'http://127.0.0.1:5000/tasks')
+    r  = 0
     try:
         r = requests.get('http://127.0.0.1:5000/tasks')
     except ConnectionError:
-        time.sleep(10)
         get_the_request()
 
     a = r.json()
@@ -55,4 +55,4 @@ if __name__ == '__main__':
     print("running testing ########")
     time.sleep(100)
     unittest.main(verbosity=2)
-    
+
