@@ -54,10 +54,7 @@ jobs:
 
       - run:
           name: run tests
-          command: |
-            . venv/bin/activate
-            python test_flask.py
-
+          command:nosetests test_flask.py
       
       - store_artifacts:
           path: test-reports
