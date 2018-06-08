@@ -31,7 +31,7 @@ def get_the_request(count):
     try:
         r = requests.get('http://127.0.0.1:5000/tasks')
     except ConnectionError:
-    	if count > 10
+    	if count > 10:
     		count += 1
         	get_the_request(count)
         else:
