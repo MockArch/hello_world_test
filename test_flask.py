@@ -8,7 +8,6 @@ import time
 import os
 import sys
 from requests.exceptions import *
-
 tasks = [
     {
         "description": "Milk, Cheese, Pizza, Fruit, Tylenol",
@@ -25,14 +24,19 @@ tasks = [
 ]
 
 
-def get_the_request():
+def get_the_request(count):
     #http = urllib3.PoolManager()
     #r = http.request('GET', 'http://127.0.0.1:5000/tasks')
     r  = 0
     try:
         r = requests.get('http://127.0.0.1:5000/tasks')
     except ConnectionError:
-        get_the_request()
+    	if count > 10
+    		count += 1
+        	get_the_request(count)
+        else:
+        	raise RequestException()	
+
 
     a = r.json()
     print(a)
@@ -46,7 +50,7 @@ def get_the_request():
 
 
 class SimpleFlaskTest(unittest.TestCase):
-    data = get_the_request()
+    data = get_the_request(0)
     def test_flask(self):
     	self.assertTrue(self.__class__.data, msg="the api json response it not fine")
 
