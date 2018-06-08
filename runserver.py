@@ -4,35 +4,54 @@ import time
 # import test
 import pytest
 from multiprocessing import Process, Lock
-from test_flask import get_the_request, tasks
 import os
 
 
 lock = Lock()
 FILE_NAME = '/test_flask.py'
+FILE_APP = '/app.py'
+
+END_PRO = False
+
 
 def flask_runner():
-	# time.sleep(10)
-	app.runserver()
-	# pass
+    p = multiprocessing.current_process()
+    print(p.pid)
+    currnt = os.getcwd()
+    path = currnt + FILE_APP
+    print(path)
+    cmd = "python" + " " + path + " " + "&"
+    c = os.system(cmd)
+    print(c)
+    print("###########################", END_PRO)
+    time.sleep(5)
+    os.system("pkill -9 python")
+    kill_cmd = "kill -9" + " " + str(p.pid)
+    os.system(kill_cmd)
 
 
 def app_test_runner():
-	est_flask()
-	#data = get_the_request()
-	#assert data == True , "The api response is not equal to assigned"
+    # time.sleep(100)
+    currnt = os.getcwd()
+    path = currnt + FILE_NAME
+    print(path)
+    END_PRO = True
+    cmd = 'nosetests' + " " + path
+    os.system(cmd)
+    # test_flask()
+    # data = get_the_request()
+    # assert data == True , "The api response is not equal to assigned"
 
 
 if __name__ == '__main__':
-	d = multiprocessing.Process(name='daemon', target=flask_runner)
-	dir(d)
-	d.daemon = True
+    d = multiprocessing.Process(name='daemon', target=flask_runner)
+    d.daemon = True
+    print(dir(d))
+    n = multiprocessing.Process(
+        name='non-daemon', target=app_test_runner)
+    n.daemon = False
 
-	n = multiprocessing.Process(name='non-daemon', target=app_test_runner)
-	n.daemon = False
-
-	d.start()
-	#time.sleep(1)
-	n.start()
-	d.join()
-	n.join()
+    d.start()
+    n.start()
+    d.join()
+    n.join()
