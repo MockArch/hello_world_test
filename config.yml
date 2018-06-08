@@ -11,10 +11,7 @@ dependencies:
         python3 app.py
         background: true
 
-test:
-  override:
-    - nosetests test_flask.py
-  post:
-    - coverage run src/*.py
-    - coverage report
-    - coveralls
+- run:
+      name: Start API
+      command: |
+        python3 test_flask.py
