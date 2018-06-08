@@ -29,6 +29,7 @@ def app_test_runner():
 
 if __name__ == '__main__':
 	d = multiprocessing.Process(name='daemon', target=flask_runner)
+	dir(d)
 	d.daemon = True
 
 	n = multiprocessing.Process(name='non-daemon', target=app_test_runner)
