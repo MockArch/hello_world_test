@@ -50,11 +50,11 @@ jobs:
             . venv/bin/activate
             python app.py
           background: true
-      - sleep 10
 
       - run:
           name: run tests
-          command:nosetests test_flask.py
+          command:
+            - nosetests test_flask.py
       
       - store_artifacts:
           path: test-reports
