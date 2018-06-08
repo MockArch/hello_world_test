@@ -49,8 +49,8 @@ jobs:
           command: |
             . venv/bin/activate
             python app.py
-            background: true
-            - sleep 10
+          background: true
+      - sleep 10
 
       - run:
           name: run tests
