@@ -22,12 +22,8 @@ tasks = [
 def get_tasks():
 	return jsonify({'tasks': tasks})
 
-def runserver():
-	#rint("running server")
-	app.run(debug=True)
 
-"""
+
 if __name__ == '__main__':
 	print("running server")
 	app.run(debug=True)
-"""

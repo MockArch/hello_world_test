@@ -18,11 +18,7 @@ def flask_runner():
 
 
 def app_test_runner():
-	print(os.getcwd())
-	path = os.getcwd() + FILE_NAME 
-	cmd = 'pytest'+ " " + path
-	print(cmd)
-	os.system(cmd)
+	est_flask()
 	#data = get_the_request()
 	#assert data == True , "The api response is not equal to assigned"
 
