@@ -35,7 +35,7 @@ def get_the_request(count):
     		count += 1
         	get_the_request(count)
         else:
-        	raise RequestException()	
+        	raise RequestException("background proceesss rea")	
 
 
     a = r.json()
