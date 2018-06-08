@@ -1,17 +1,11 @@
 machine:
   python:
     version: 3.5.2
+
 dependencies:
   override:
     - pip install -r requirements.txt
 
-- run:
-      name: Start API
-      command: |
-        python3 app.py
-        background: true
-
-- run:
-      name: Start API
-      command: |
-        python3 test_flask.py
+test:
+  override:
+    - nosetests test_flask.py
